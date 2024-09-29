@@ -1,5 +1,16 @@
 {
+  "name": "ai-course",
+  "version": "1.0.0",
+  "description": "A project built by following the 'Build AI-Powered Apps with OpenAI and Node.js' course on the Frontend-Master platform.",
+  "main": "index.js",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "openai": "^4.65.0"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
