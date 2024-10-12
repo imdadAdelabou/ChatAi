@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "@langchain/core": "^0.3.10",
+    "@langchain/openai": "^0.3.7",
     "dotenv": "^16.4.5",
+    "langchain": "^0.3.2",
     "openai": "^4.65.0"
   },
   "scripts": {
