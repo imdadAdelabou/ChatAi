@@ -5,11 +5,15 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "@langchain/community": "^0.3.5",
     "@langchain/core": "^0.3.10",
     "@langchain/openai": "^0.3.7",
     "dotenv": "^16.4.5",
     "langchain": "^0.3.2",
-    "openai": "^4.65.0"
+    "openai": "^4.65.0",
+    "pdf-parse": "^1.1.1",
+    "youtube-transcript": "^1.2.1",
+    "youtubei.js": "^10.5.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
