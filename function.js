@@ -11,8 +11,8 @@ const messages = [
 ]
 
 const functions = {
-  calculate({ expressions }) {
-    return math.evaluate(expressions)
+  calculate({ expression }) {
+    return math.evaluate(expression)
   },
 }
 
