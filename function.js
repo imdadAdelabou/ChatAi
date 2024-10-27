@@ -14,6 +14,11 @@ const functions = {
   calculate({ expression }) {
     return math.evaluate(expression)
   },
+  async generateImage({ prompt }) {
+    const result = await openai.images.generate({ prompt })
+    console.log(result)
+    return ''
+  },
 }
 
 const getCompletions = (message) => {
@@ -35,6 +40,24 @@ const getCompletions = (message) => {
                   'The math expression to evaluate like "2 * 3 + (21 / 2) ^ 2"',
               },
             },
+          },
+        },
+      },
+      {
+        type: 'function',
+        function: {
+          name: 'generateImage',
+          description: 'Generate image based on a description',
+          parameters: {
+            type: 'object',
+            properties: {
+              prompt: {
+                type: 'string',
+                description:
+                  'The prompt make look like "Generate an image of a future world with aliens and futurist car"',
+              },
+            },
+            required: ['prompt'],
           },
         },
       },
