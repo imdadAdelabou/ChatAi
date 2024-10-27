@@ -18,19 +18,22 @@ const functions = {
 
 const getCompletions = (message) => {
   return openai.chat.completions.create({
-    model: 'chatgpt-4o-latest',
+    model: 'gpt-4o',
     messages,
-    functions: [
+    tools: [
       {
-        name: 'calculate',
-        description: 'Run math expression',
-        parameters: {
-          type: 'object',
-          properties: {
-            expression: {
-              type: 'string',
-              description:
-                'The math expression to evaluate like "2 * 3 + (21 / 2) ^ 2"',
+        type: 'function',
+        function: {
+          name: 'calculate',
+          description: 'Run math expression',
+          parameters: {
+            type: 'object',
+            properties: {
+              expression: {
+                type: 'string',
+                description:
+                  'The math expression to evaluate like "2 * 3 + (21 / 2) ^ 2"',
+              },
             },
           },
         },
@@ -42,10 +45,11 @@ const getCompletions = (message) => {
 let response
 while (true) {
   response = await getCompletions(response)
+  console.log(response.choices[0].finish_reason)
   if (response.choices[0].finish_reason === 'stop') {
     console.log(response.choices[0].message)
     break
-  } else if (response.choices[0].finish_reason === 'function_call') {
+  } else if (response.choices[0].finish_reason === 'tool_calls') {
     const fName = response.choices[0].message.tool_calls[0].function.name
     const args = response.choices[0].message.tool_calls[0].function.arguments
     console.log(fName)
