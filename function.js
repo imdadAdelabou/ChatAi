@@ -77,7 +77,7 @@ while (true) {
     const args = response.choices[0].message.tool_calls[0].function.arguments
     console.log(fName)
     console.log(args)
-    const funcToCall = functions[fName]
+    const funcToCall = await functions[fName]
     const argmt = JSON.parse(args)
 
     const result = funcToCall(argmt)
